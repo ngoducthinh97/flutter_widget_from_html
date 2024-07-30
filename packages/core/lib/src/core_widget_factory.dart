@@ -4,6 +4,7 @@ import 'package:flutter/material.dart'
     show
         // we want to limit Material usages to be as generic as possible
         CircularProgressIndicator,
+        Scrollbar,
         Tooltip;
 import 'package:flutter/widgets.dart';
 import 'package:html/dom.dart' as dom;
@@ -291,8 +292,10 @@ class WidgetFactory extends WidgetFactoryResetter with AnchorWidgetFactory {
   }
 
   /// Builds horizontal scroll view.
-  Widget? buildHorizontalScrollView(BuildTree tree, Widget child) =>
-      SingleChildScrollView(scrollDirection: Axis.horizontal, child: child);
+  Widget? buildHorizontalScrollView(BuildTree tree, Widget child) => Scrollbar(
+      thumbVisibility: true,
+      child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal, child: child));
 
   /// Builds image widget from an [ImageMetadata].
   Widget? buildImage(BuildTree tree, ImageMetadata data) {
