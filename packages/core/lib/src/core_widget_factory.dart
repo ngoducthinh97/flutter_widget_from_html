@@ -290,11 +290,14 @@ class WidgetFactory extends WidgetFactoryResetter with AnchorWidgetFactory {
     }
     return recognizer;
   }
+  final _scrollController = ScrollController();
 
   /// Builds horizontal scroll view.
   Widget? buildHorizontalScrollView(BuildTree tree, Widget child) => Scrollbar(
+      controller: _scrollController,
       thumbVisibility: true,
       child: SingleChildScrollView(
+          controller: _scrollController,
           padding: EdgeInsets.zero,
           scrollDirection: Axis.horizontal, child: child));
 
@@ -489,6 +492,7 @@ class WidgetFactory extends WidgetFactoryResetter with AnchorWidgetFactory {
   @override
   void dispose() {
     super.dispose();
+    _scrollController.dispose();
     _dispose();
   }
 
