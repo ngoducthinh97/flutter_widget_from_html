@@ -295,6 +295,7 @@ class WidgetFactory extends WidgetFactoryResetter with AnchorWidgetFactory {
   Widget? buildHorizontalScrollView(BuildTree tree, Widget child) => Scrollbar(
       thumbVisibility: true,
       child: SingleChildScrollView(
+          padding: EdgeInsets.zero,
           scrollDirection: Axis.horizontal, child: child));
 
   /// Builds image widget from an [ImageMetadata].
